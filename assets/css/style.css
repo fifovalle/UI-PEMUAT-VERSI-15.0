@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f0e17;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.putaran {
+    --ukuran: 100px;
+    --kotakPertama: #ff8906;
+    --kotakKedua: #e53170;
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.putaran::after,
+.putaran::before {
+    position: absolute;
+    content: "";
+    width: var(--ukuran);
+    height: var(--ukuran);
+    top: 50%;
+    animation: atas 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+    left: 50%;
+    background: var(--kotakPertama);
+}
+
+.putaran::after {
+    background: var(--kotakKedua);
+    top: calc(50% - var(--ukuran));
+    left: calc(50% - var(--ukuran));
+    animation: bawah 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+}
+
+@keyframes bawah {
+
+    0%,
+    100% {
+        transform: none;
+    }
+
+    25% {
+        transform: translateX(100%);
+    }
+
+    50% {
+        transform: translateX(100%) translateY(100%);
+    }
+
+    75% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes atas {
+
+    0%,
+    100% {
+        transform: none;
+    }
+
+    25% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(-100%) translateY(-100%);
+    }
+
+    75% {
+        transform: translateY(-100%);
+    }
+}
